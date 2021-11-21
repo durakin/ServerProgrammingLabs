@@ -24,7 +24,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan("com.github.durakin.serverprogramming.lab4")
 @PropertySource("classpath:application.properties")
-@EnableJpaRepositories
+@EnableJpaRepositories("com.github.durakin.serverprogramming.lab4.repository")
 @RequiredArgsConstructor
 public class SpringConfiguration {
     private final Environment env;

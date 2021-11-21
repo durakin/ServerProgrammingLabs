@@ -17,7 +17,7 @@ public class Faction {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "home_system_id")
     private System homeSystem;
 
@@ -78,5 +78,15 @@ public class Faction {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Faction ");
+        sb.append(name);
+        sb.append(" with allegiance ").append(allegiance);
+        sb.append(" and ").append(government);
+        sb.append(" government");
+        return sb.toString();
     }
 }

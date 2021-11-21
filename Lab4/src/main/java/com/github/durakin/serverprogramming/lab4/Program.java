@@ -3,7 +3,12 @@ package com.github.durakin.serverprogramming.lab4;
 
 import com.github.durakin.serverprogramming.lab4.entity.Commander;
 import com.github.durakin.serverprogramming.lab4.repository.CommanderCriteriaRepository;
+import com.github.durakin.serverprogramming.lab4.repository.FactionRepository;
+import com.github.durakin.serverprogramming.lab4.service.CommanderService;
+import com.github.durakin.serverprogramming.lab4.service.FactionService;
 import com.github.durakin.serverprogramming.lab4.service.StationService;
+import com.github.durakin.serverprogramming.lab4.service.impl.CommanderServiceImpl;
+import com.github.durakin.serverprogramming.lab4.service.impl.FactionServiceImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +33,7 @@ public class Program {
         // var data = service.findById(ConsoleInput.CheckedIntInput("Enter required apparel ID ", reader));
         //  System.out.println(data != null ? data : "Element not found ");
         var emf = context.getBean("entityManagerFactory", EntityManagerFactory.class);
+        FactionService factionService = context.getBean("factionServiceImpl", FactionService.class);
 
         /*
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -41,12 +47,22 @@ public class Program {
 
          */
         var commanderRepository = new CommanderCriteriaRepository(emf);
+        CommanderService  commanderService = context.getBean("commanderServiceImpl", CommanderService.class);
+        //new CommanderServiceImpl(commanderRepository);
         System.out.println();
-        commanderRepository.FindByFactionName("10 Delta Coronae Borealis Central Services").forEach(System.out::println);
-
+        commanderService.FindByFactionName("10 Delta Coronae Borealis Central Services").forEach(System.out::println);
         System.out.println();
-        commanderRepository.FindByAllegianceName("Independent").forEach(System.out::println);
-
+        commanderService.FindByAllegianceName("Independent").forEach(System.out::println);
+        System.out.println();
+        commanderService.FindByAllegianceName("Pilots Federation").forEach(System.out::println);
+        System.out.println();
+        // INSERT INTO factions VALUES (default, 'New player faction', 414, 7, 128, true);
+        var newCommander = new Commander();
+        newCommander.setName("Player created with ORM");
+        newCommander.setFaction(factionService.findById(77635));
+        commanderService.add(newCommander);
+        commanderService.FindByFactionName("New player faction").forEach(System.out::println);
+        System.out.println();
 
         /*
 

@@ -29,8 +29,8 @@ public class CommanderCriteriaRepository {
         this.criteriaBuilder = entityManager.getCriteriaBuilder();
     }
 
-    @Transactional
-    public void insertCommander(Commander commander) {
+
+    public void InsertCommander(Commander commander) {
         this.entityManager.persist(commander);
     }
 

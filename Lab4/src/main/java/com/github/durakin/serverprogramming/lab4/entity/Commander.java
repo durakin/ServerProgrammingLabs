@@ -44,4 +44,12 @@ public class Commander {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Commander ");
+        sb.append(name);
+        sb.append(" from ").append(faction);
+        return sb.toString();
+    }
 }
