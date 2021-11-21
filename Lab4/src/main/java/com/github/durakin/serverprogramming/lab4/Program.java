@@ -1,10 +1,20 @@
 package com.github.durakin.serverprogramming.lab4;
 
-import com.github.durakin.serverprogramming.lab4.entity.Apparel;
-import com.github.durakin.serverprogramming.lab4.service.ApparelService;
-import com.github.durakin.serverprogramming.lab4.service.StationService;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.github.durakin.serverprogramming.lab4.entity.Commander;
+import com.github.durakin.serverprogramming.lab4.repository.CommanderCriteriaRepository;
+import com.github.durakin.serverprogramming.lab4.service.StationService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -15,8 +25,29 @@ public class Program {
 
         var reader = new BufferedReader(new InputStreamReader(System.in));
         var service = context.getBean("stationServiceImpl", StationService.class);
-        var data = service.findById(ConsoleInput.CheckedIntInput("Enter required apparel ID ", reader));
-        System.out.println(data != null ? data : "Element not found ");
+        // var data = service.findById(ConsoleInput.CheckedIntInput("Enter required apparel ID ", reader));
+        //  System.out.println(data != null ? data : "Element not found ");
+        var emf = context.getBean("entityManagerFactory", EntityManagerFactory.class);
+
+        /*
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<Commander> personCriteria = cb.createQuery(Commander.class);
+        Root<Commander> personRoot = personCriteria.from(Commander.class);
+        personCriteria.select(personRoot);
+        em.createQuery(personCriteria)
+                .getResultList()
+                .forEach(System.out::println);
+
+         */
+        var commanderRepository = new CommanderCriteriaRepository(emf);
+        System.out.println();
+        commanderRepository.FindByFactionName("10 Delta Coronae Borealis Central Services").forEach(System.out::println);
+
+        System.out.println();
+        commanderRepository.FindByAllegianceName("Independent").forEach(System.out::println);
+
+
         /*
 
         boolean lastMenuIteration = false;
