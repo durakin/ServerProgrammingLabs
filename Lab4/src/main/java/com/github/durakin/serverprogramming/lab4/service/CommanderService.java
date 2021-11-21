@@ -6,10 +6,9 @@ import java.util.List;
 
 public interface CommanderService {
 
-    public Integer add(Commander commander);
+    Integer add(Commander commander);
 
-    public List<Commander> FindByFactionName(String name);
+    List<Commander> FindByFactionName(String name);
 
-    public List<Commander> FindByAllegianceName(String allegiance);
-
+    List<Commander> FindByAllegianceName(String allegiance);
 }

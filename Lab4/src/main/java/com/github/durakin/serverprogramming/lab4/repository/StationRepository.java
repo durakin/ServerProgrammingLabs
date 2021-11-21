@@ -1,8 +1,6 @@
 package com.github.durakin.serverprogramming.lab4.repository;
 
-import com.github.durakin.serverprogramming.lab4.entity.Commander;
 import com.github.durakin.serverprogramming.lab4.entity.Station;
-import com.github.durakin.serverprogramming.lab4.entity.System;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
