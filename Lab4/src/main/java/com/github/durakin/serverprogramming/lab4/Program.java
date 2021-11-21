@@ -59,10 +59,12 @@ public class Program {
         // INSERT INTO factions VALUES (default, 'New player faction', 414, 7, 128, true);
         var newCommander = new Commander();
         newCommander.setName("Player created with ORM");
-        newCommander.setFaction(factionService.findById(77635));
+        newCommander.setFaction(factionService.findByName("New player faction"));
         commanderService.add(newCommander);
         commanderService.FindByFactionName("New player faction").forEach(System.out::println);
         System.out.println();
+        context.close();
+        System.exit(0);
 
         /*
 

@@ -8,6 +8,8 @@ import com.github.durakin.serverprogramming.lab4.service.FactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class FactionServiceImpl implements FactionService {
     @Autowired
@@ -17,4 +19,11 @@ public class FactionServiceImpl implements FactionService {
     public Faction findById(Integer id) {
         return this.factionRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Faction findByName(String name) {
+        return this.factionRepository.findByName(name).orElse(null);
+    }
+
+
 }
