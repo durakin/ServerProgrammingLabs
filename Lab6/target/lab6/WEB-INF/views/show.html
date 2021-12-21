@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show | RKIS_Lab6</title>
+</head>
+<body>
+<section>
+    <p th:text="'Found: ' + ${apparel != null ? 1 : 0}">Number: </p>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>In stock</th>
+            <th>Size</th>
+            <th>Sex</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><p th:text="*{apparel.getId()}"></p></td>
+            <td><p th:text="*{apparel.getApparelType()}"></p></td>
+            <td><p th:text="*{apparel.getPrice()}"></p></td>
+            <td><p th:text="*{apparel.getInStock()}"></p></td>
+            <td><p th:text="*{apparel.getSize()}"></p></td>
+            <td><p th:text="*{apparel.getSex()}"></p></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<footer>
+    <hr>
+    <a th:href="@{~/Lab6_war/}">Home</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Index | RKIS_Lab6</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<header>
+    <h1>Apparels</h1>
+</header>
+<article>
+    <p th:text="${count} + ' different apparels in shop'">Number: </p>
+    <ul>
+
+        <li><a th:href="@{~/Lab6_war/find}">Check apparels</a></li>
+        <li><a th:href="@{~/Lab6_war/delete}">Delete apparel</a></li>
+        <li><a th:href="@{~/Lab6_war/edit}">Edit apparel</a></li>
+        <li><a th:href="@{~/Lab6_war/add}">Add apparel</a></li>
+    </ul>
+</article>
+<footer>
+    <hr>
+    <a href="/Lab6_war/">Home</a>
+</footer>
+</body>
+</html>
